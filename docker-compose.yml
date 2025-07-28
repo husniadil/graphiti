@@ -19,6 +19,8 @@ services:
     depends_on:
       neo4j:
         condition: service_healthy
+    volumes:
+      - graphiti_data:/data
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - NEO4J_URI=bolt://neo4j:${NEO4J_PORT:-7687}
@@ -47,4 +49,5 @@ services:
       - NEO4J_AUTH=${NEO4J_USER}/${NEO4J_PASSWORD}
 
 volumes:
+  graphiti_data:
   neo4j_data:
